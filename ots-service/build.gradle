@@ -54,7 +54,7 @@ task acceptanceTest(type: Test) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.0'
+    gradleVersion = '2.2.1'
 }
 
 repositories {
