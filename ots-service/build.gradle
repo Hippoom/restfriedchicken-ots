@@ -1,0 +1,80 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'spring-boot'
+
+/* sourceCompatibility = 1.8 */
+group = 'com.restfriedchicken.ots'
+version = '1.0'
+
+
+buildscript {
+
+    ext {
+        springBootVersion = '1.1.9.RELEASE'
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${project.springBootVersion}")
+    }
+}
+
+test {
+    exclude '**/*AcceptanceTest*'
+
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+    }
+}
+
+install {
+    dependsOn build
+
+    repositories.mavenInstaller {
+        pom.project {
+            parent {
+                groupId 'org.springframework.boot'
+                artifactId 'spring-boot-starter-parent'
+                version "${project.springBootVersion}"
+            }
+        }
+    }
+}
+
+task acceptanceTest(type: Test) {
+    // this task will be executed in isolation since all artifacts have been built and deployed
+    dependsOn = []
+    include '**/*AcceptanceTest*'
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+
+
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile 'org.springframework.hateoas:spring-hateoas:0.16.0.RELEASE'
+
+    testCompile "org.springframework.boot:spring-boot-starter-test"
+    testCompile('junit:junit:4.12') {
+        exclude group: 'org.hamcrest'
+    }
+    testCompile 'org.hamcrest:hamcrest-library:1.3'
+    testCompile 'com.google.guava:guava:18.0'
+    testCompile 'com.jayway.restassured:rest-assured:2.4.0'
+    testCompile 'com.jayway.jsonpath:json-path:1.2.0'
+
+}
