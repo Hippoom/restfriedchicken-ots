@@ -1,6 +1,8 @@
 ---
  - name: make sure jdk8 is uploaded
    copy: src=~/file-server/java/{{ jdk_rpm }} dest={{ target_rpm_dir }}/ owner=root group=root
+   sudo: yes
 
  - name: make sure jdk8 is installed
    yum: name={{ target_rpm_dir }}/{{ jdk_rpm }} state=present
+   sudo: yes

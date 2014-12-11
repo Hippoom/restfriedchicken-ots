@@ -1,0 +1,26 @@
+---
+ - name: make sure ots scriptd is uploaded
+   template: src={{ item.template }} dest=~/{{ item.file }}
+   with_items:
+     - { template: 'ots_app_lib.sh.j2', file: 'ots_app_lib.sh' }
+     - { template: 'ots_app_is_running.sh', file: 'ots_app_is_running.sh' }
+     - { template: 'ots_app_stop.sh', file: 'ots_app_stop.sh' }
+     - { template: 'ots_app_start.sh', file: 'ots_app_start.sh' }
+
+ - name: make sure ots service app is uploaded
+   copy: src=../../ots-service/build/libs/ots-service-1.0.jar dest=~/
+   register: new_app_released
+
+ - name: stop ots service application
+   shell: sh ~/ots_app_stop.sh
+   when: new_app_released.changed
+
+ - name: detect ots service is running
+   shell: sh ~/ots_app_is_running.sh
+   register: ots_is_running
+
+ - debug: msg="{{ ots_is_running.stdout }}"
+
+ - name: make sure ots service application is running
+   shell: nohup sh ~/ots_app_start.sh &
+   when: ots_is_running.stdout == "False"

@@ -1,0 +1,18 @@
+#!/bin/bash -e
+
+function ots_stop(){
+	pid=$(ots_pid)
+	$pid | while read line
+	do
+		kill -9 $line
+	done
+}
+
+function ots_start(){
+	java -jar ~/ots-service-1.0.jar
+}
+
+function ots_pid(){
+	echo `ps aux | grep ots-service |grep -v grep| tr -s ' '|cut -f2 -d ' '`
+}
+

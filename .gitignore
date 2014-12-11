@@ -4,6 +4,8 @@ build/
 # Ignore idea
 .idea/
 *.iml
+project/
+target/
 restfriedchicken-ots.iws
 
 # Ignore vagrant machines

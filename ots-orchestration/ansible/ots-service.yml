@@ -2,7 +2,7 @@
 - name: Deploy OTS service
   hosts: ots-services
   user: "{{ ots_service_user }}"
-  sudo: yes
 
   roles:
     - jdk8
+    - ots-service-app

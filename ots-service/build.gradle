@@ -51,6 +51,7 @@ task acceptanceTest(type: Test) {
     testLogging {
         events "passed", "skipped", "failed", "standardOut", "standardError"
     }
+    outputs.upToDateWhen { false }//force to always rerun
 }
 
 task wrapper(type: Wrapper) {
