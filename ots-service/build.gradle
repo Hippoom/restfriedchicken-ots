@@ -1,11 +1,5 @@
-apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'spring-boot'
-
-/* sourceCompatibility = 1.8 */
-group = 'com.restfriedchicken.ots'
-version = '1.0'
-
 
 buildscript {
 
@@ -52,23 +46,6 @@ task acceptanceTest(type: Test) {
         events "passed", "skipped", "failed", "standardOut", "standardError"
     }
     outputs.upToDateWhen { false }//force to always rerun
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.2.1'
-}
-
-repositories {
-    mavenLocal()
-    mavenCentral()
-}
-
-configurations {
-    provided
-}
-
-sourceSets {
-    main { compileClasspath += configurations.provided }
 }
 
 dependencies {
