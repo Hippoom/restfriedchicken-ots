@@ -1,7 +1,8 @@
-package com.restfriedchicken.ots.rest;
+package com.restfriedchicken.otsacceptance;
 
 import com.jayway.jsonpath.JsonPath;
 import com.restfriedchicken.ots.config.EnvironmentConfig;
+import com.restfriedchicken.ots.rest.OnlineTxnResourceTestTemplate;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.runner.RunWith;
 import org.springframework.beans.BeansException;
