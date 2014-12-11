@@ -14,9 +14,6 @@ import static org.apache.http.HttpStatus.SC_ACCEPTED;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.startsWith;
 
-/**
- * Created by twer on 12/9/14.
- */
 public abstract class OnlineTxnResourceTestTemplate {
     @Before
     public void config_rest_assured() {

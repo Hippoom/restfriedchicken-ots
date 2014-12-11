@@ -4,4 +4,3 @@
 
  - name: make sure jdk8 is installed
    yum: name={{ target_rpm_dir }}/{{ jdk_rpm }} state=present
-   s
