@@ -4,5 +4,4 @@
   user: "{{ ots_service_user }}"
 
   roles:
-    - jdk8
     - ots-service-app

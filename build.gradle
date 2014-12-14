@@ -1,11 +1,23 @@
-subprojects {
+allprojects {
+    apply plugin: 'idea'
+
     group = 'com.restfriedchicken.ots'
     version = '1.0'
+
+//    idea {
+//        project {
+//            languageLevel = '1.8'
+//        }
+//    }
+}
+
+subprojects {
 
 
     apply plugin: 'java'
 
     sourceCompatibility = 1.8
+    targetCompatibility = 1.8
 
     repositories {
         mavenLocal()
@@ -19,7 +31,6 @@ subprojects {
     sourceSets {
         main { compileClasspath += configurations.provided }
     }
-
 }
 
 task wrapper(type: Wrapper) {

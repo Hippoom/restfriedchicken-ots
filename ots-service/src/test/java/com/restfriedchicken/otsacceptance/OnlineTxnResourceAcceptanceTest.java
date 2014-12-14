@@ -35,7 +35,7 @@ public class OnlineTxnResourceAcceptanceTest extends OnlineTxnResourceTestTempla
 
             FileSystemResource build = new FileSystemResource("build.gradle");
 
-            final File json = build.createRelative("../ots-orchestration/environments/dev.json").getFile().getAbsoluteFile();
+            final File json = build.createRelative("../ots-orchestration/environments/" + env() + ".json").getFile().getAbsoluteFile();
 
             String baseHostRel = JsonPath.read(json, "$.ots-services.vars.ots_service_base_host_rel");
             String baseHost = null;
@@ -47,6 +47,11 @@ public class OnlineTxnResourceAcceptanceTest extends OnlineTxnResourceTestTempla
             EnvironmentConfig config = new EnvironmentConfig();
             config.setBaseUri("http://" + baseHost);
             return config;
+        }
+
+        private String env() {
+            final String env = System.getenv("env");
+            return env == null ? "dev" : env;
         }
 
         @Override

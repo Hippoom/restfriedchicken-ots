@@ -1,0 +1,13 @@
+{
+  "ots-services": {
+    "ots-service-1": {
+      "host": "192.168.61.2",
+      "user": "vagrant",
+      "pass": "vagrant"
+    },
+    "vars": {
+      "ots_service_user": "vagrant",
+      "ots_service_base_host_rel": "ots-service-1"
+    }
+  }
+}
