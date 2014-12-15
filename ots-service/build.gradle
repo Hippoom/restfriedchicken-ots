@@ -11,18 +11,13 @@ buildscript {
         mavenLocal()
         mavenCentral()
     }
+
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${project.springBootVersion}")
     }
 }
 
-test {
-    exclude '**/*AcceptanceTest*'
 
-    testLogging {
-        events "passed", "skipped", "failed", "standardOut", "standardError"
-    }
-}
 
 install {
     dependsOn build

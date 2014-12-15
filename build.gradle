@@ -31,6 +31,27 @@ subprojects {
     sourceSets {
         main { compileClasspath += configurations.provided }
     }
+
+
+    task testJar(type: Jar) {
+        classifier = 'tests'
+        from sourceSets.test.output
+    }
+
+    test.dependsOn testJar
+
+    test {
+        exclude '**/*AcceptanceTest*'
+
+        testLogging {
+            events "passed", "skipped", "failed", "standardOut", "standardError"
+        }
+    }
+
+    artifacts {
+        archives testJar
+    }
+
 }
 
 task wrapper(type: Wrapper) {
