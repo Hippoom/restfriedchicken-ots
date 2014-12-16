@@ -1,4 +1,4 @@
-//include 'ots-orchestration'
+include 'ots-orchestration'
 
 include 'ots-service'
 

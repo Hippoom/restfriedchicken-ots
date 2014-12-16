@@ -33,6 +33,32 @@ install {
     }
 }
 
+task downloadArtifacts(type: Exec) {
+
+    commandLine "mvn"
+    args "org.apache.maven.plugins:maven-dependency-plugin:2.9:get",
+            "-DgroupId=${project.group}",
+            "-DartifactId=${project.name}",
+            "-Dversion=${project.version}",
+            "-Dtransitive=false",
+            "-Ddest=build"
+
+}
+
+task downloadTestArtifacts(type: Exec) {
+
+    commandLine "mvn"
+    args "org.apache.maven.plugins:maven-dependency-plugin:2.9:get",
+            "-DgroupId=${project.group}",
+            "-DartifactId=${project.name}",
+            "-Dversion=${project.version}",
+            "-Dclassifier=tests",
+            "-Dtransitive=false",
+            "-Ddest=build"
+
+}
+
+
 task acceptanceTest(type: Test) {
     // this task will be executed in isolation since all artifacts have been built and deployed
     dependsOn = []

@@ -1,18 +1,20 @@
 allprojects {
-    apply plugin: 'idea'
 
     group = 'com.restfriedchicken.ots'
     version = '1.0'
 
+//    apply plugin: 'idea'
 //    idea {
 //        project {
 //            languageLevel = '1.8'
 //        }
 //    }
+    ext.env = System.getenv('OTS_ENV') == null ? "dev" : System.getenv('OTS_ENV')
+
+    println "The environment is ${env}"
 }
 
-subprojects {
-
+configure(subprojects.findAll { it.name == 'ots-service' }) {
 
     apply plugin: 'java'
 
