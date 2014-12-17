@@ -50,7 +50,7 @@ public class OnlineTxnResourceAcceptanceTest extends OnlineTxnResourceTestTempla
         }
 
         private String env() {
-            final String env = System.getenv("env");
+            final String env = System.getenv("OTS_ENV");
             return env == null ? "dev" : env;
         }
 

@@ -1,9 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
 task unitTest(type: Exec) {
     commandLine "sh"
     args "test.sh"
 }
 
-task orchestrationSmokeTest(type: Exec) {
-    commandLine "sh"
-    args "server-spec.sh", "${env}"
+
+task dist(type: Zip) {
+    dependsOn unitTest
+    classifier = 'scripts'
+    from '.'
+    exclude 'environments', 'build'
+}
+
+assemble.dependsOn dist
+
+artifacts {
+    archives dist
+}
+
+install {
+    dependsOn assemble
 }
