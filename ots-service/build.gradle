@@ -119,5 +119,5 @@ dependencies {
     testCompile 'com.jayway.restassured:rest-assured:2.4.0'
     testCompile 'com.jayway.jsonpath:json-path:1.2.0'
 
-
+    provided 'org.projectlombok:lombok:1.14.8'
 }

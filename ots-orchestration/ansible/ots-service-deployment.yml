@@ -3,4 +3,4 @@
   hosts: localhost
 
   roles:
-    - ots-service
+    - ots-service-deployment

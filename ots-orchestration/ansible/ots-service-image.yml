@@ -4,6 +4,6 @@
   sudo: yes
 
   roles:
-    - ots-service-docker-image-builder
+    - ots-service-image
 
 

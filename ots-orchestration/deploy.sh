@@ -1,5 +1,5 @@
 #!/bin/bash
 
 cd ansible
-ansible-playbook -i $1.py ots-service.yml -vv
+ansible-playbook ots-service-container.yml -i docker -vvvv
 

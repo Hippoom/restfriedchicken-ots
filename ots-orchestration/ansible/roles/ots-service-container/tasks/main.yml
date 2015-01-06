@@ -1,0 +1,7 @@
+---
+
+ - name: start ots service container
+   shell: >
+     docker run -d -p={{ ots_service_port }}:8080 hippoom/restfriedchicken-ots-service
+
+

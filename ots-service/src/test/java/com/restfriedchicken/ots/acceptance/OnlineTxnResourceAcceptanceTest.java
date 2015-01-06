@@ -32,20 +32,22 @@ public class OnlineTxnResourceAcceptanceTest extends OnlineTxnResourceTestTempla
 
         @Bean
         public EnvironmentConfig config() throws IOException {
+            EnvironmentConfig config = new EnvironmentConfig();
 
             FileSystemResource build = new FileSystemResource("build.gradle");
 
-            final File json = build.createRelative("../ots-orchestration/environments/" + env() + ".json").getFile().getAbsoluteFile();
+            final File json = build.createRelative("ots-orchestration/environments/" + env() + ".json").getFile().getAbsoluteFile();
 
             String baseHostRel = JsonPath.read(json, "$.ots-services.vars.ots_service_base_host_rel");
-            String baseHost = null;
 
             if (StringUtils.isNotBlank(baseHostRel)) {
-                baseHost = JsonPath.read(json, format("$.ots-services.%s.host", baseHostRel));
+                config.setBaseUri("http://" + JsonPath.<String>read(json, format("$.ots-services.%s.host", baseHostRel)));
             }
 
-            EnvironmentConfig config = new EnvironmentConfig();
-            config.setBaseUri("http://" + baseHost);
+            String port = JsonPath.read(json, "$.ots-services.vars.ots_service_port");
+            if (StringUtils.isNotBlank(port)) {
+                config.setPort(Integer.parseInt(port));
+            }
             return config;
         }
 
