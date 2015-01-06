@@ -1,7 +1,6 @@
 ---
 - name: Deploy OTS service
-  hosts: ots-services
-  user: "{{ ots_service_user }}"
+  hosts: localhost
 
   roles:
-    - ots-service-app
+    - ots-service

@@ -1,0 +1,32 @@
+---
+
+ - name: create and clear build context
+   shell: mkdir -p /tmp/ots && rm -rf /tmp/ots/*
+
+ - name: copy Dockerfile
+   template: >
+     src=Dockerfile.j2
+     dest=/tmp/ots/Dockerfile
+
+ - name: copy presiqueties to build context
+   copy: >
+     src=~/file-server/java/jdk-8u25-linux-x64.rpm
+     dest=/tmp/ots/
+
+ - name: copy ansbile playbooks to build context
+   copy: >
+     src=../{{ item }}
+     dest=/tmp/ots/ots-orchestration/
+   with_items:
+     - ansible
+     - environments
+
+ - name: copy binary to build context
+   copy: >
+     src=../../ots-service/build/libs/
+     dest=/tmp/ots/
+
+ - name: build ots service image
+   shell: >
+     docker build -t="hippoom/restfriedchicken-ots-service" /tmp/ots/
+

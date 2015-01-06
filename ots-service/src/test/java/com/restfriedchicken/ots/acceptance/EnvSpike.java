@@ -1,4 +1,4 @@
-package com.restfriedchicken.otsacceptance;
+package com.restfriedchicken.ots.acceptance;
 
 import org.junit.Test;
 

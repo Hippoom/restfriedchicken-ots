@@ -1,4 +1,4 @@
-package com.restfriedchicken.otsacceptance;
+package com.restfriedchicken.ots.acceptance;
 
 import com.jayway.jsonpath.JsonPath;
 import com.restfriedchicken.ots.config.EnvironmentConfig;

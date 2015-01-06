@@ -1,0 +1,10 @@
+FROM hippoom/ansible_centos65:1.8.1
+MAINTAINER Rest Fried Chicken - Hippoom
+
+
+ADD * /root/Downloads/
+WORKDIR /root/Downloads/ansible
+RUN chmod +x dev.py && ansible-playbook -i dev.py ots-service.yml -vvvv -c local
+RUN rm -rf /root/Downloads/*
+CMD sh /root/ots_app_start.sh
+EXPOSE 8080

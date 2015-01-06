@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+PWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 function ots_stop(){
 	pid=$(ots_pid)
 	$pid | while read line
@@ -9,7 +11,7 @@ function ots_stop(){
 }
 
 function ots_start(){
-	java -jar ~/ots-service-1.0.jar
+	java -jar /$PWD/{{ ots_binary }}
 }
 
 function ots_pid(){

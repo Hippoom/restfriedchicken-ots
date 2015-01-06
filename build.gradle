@@ -3,12 +3,6 @@ allprojects {
     group = 'com.restfriedchicken.ots'
     version = '1.0'
 
-//    apply plugin: 'idea'
-//    idea {
-//        project {
-//            languageLevel = '1.8'
-//        }
-//    }
     ext.env = System.getenv('OTS_ENV') == null ? "dev" : System.getenv('OTS_ENV')
 
     println "The environment is ${env}"
@@ -17,6 +11,7 @@ allprojects {
 configure(subprojects.findAll { it.name == 'ots-service' }) {
 
     apply plugin: 'java'
+    apply plugin: 'maven'
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
@@ -34,26 +29,9 @@ configure(subprojects.findAll { it.name == 'ots-service' }) {
         main { compileClasspath += configurations.provided }
     }
 
-
-    task testJar(type: Jar) {
-        classifier = 'tests'
-        from sourceSets.test.output
+    dependencies {
+        provided 'org.projectlombok:lombok:1.14.8'
     }
-
-    test.dependsOn testJar
-
-    test {
-        exclude '**/*AcceptanceTest*'
-
-        testLogging {
-            events "passed", "skipped", "failed", "standardOut", "standardError"
-        }
-    }
-
-    artifacts {
-        archives testJar
-    }
-
 }
 
 task wrapper(type: Wrapper) {
