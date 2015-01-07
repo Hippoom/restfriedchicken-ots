@@ -1,7 +1,13 @@
 ---
 
+ - name: stop existing ots service container
+   shell: >
+      docker stop acceptance-ots-service
+   ignore_errors: yes
+
+
  - name: start ots service container
    shell: >
-     docker run -d -p={{ ots_service_port }}:8080 hippoom/restfriedchicken-ots-service
+     docker run --name="acceptance-ots-service" -d -p={{ ots_service_port }}:8080 hippoom/restfriedchicken-ots-service
 
 
