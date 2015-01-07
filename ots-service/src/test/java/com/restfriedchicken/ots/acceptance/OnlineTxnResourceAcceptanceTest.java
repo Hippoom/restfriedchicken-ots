@@ -36,7 +36,7 @@ public class OnlineTxnResourceAcceptanceTest extends OnlineTxnResourceTestTempla
 
             FileSystemResource build = new FileSystemResource("build.gradle");
 
-            final File json = build.createRelative("ots-orchestration/environments/" + env() + ".json").getFile().getAbsoluteFile();
+            final File json = build.createRelative("../ots-orchestration/environments/" + env() + ".json").getFile().getAbsoluteFile();
 
             String baseHostRel = JsonPath.read(json, "$.ots-services.vars.ots_service_base_host_rel");
 
