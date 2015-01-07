@@ -3,12 +3,12 @@
     "ots-service-1": {
       "host": "192.168.70.2",
       "user": "vagrant",
-      "pass": "vagrant"
+      "pass": "vagrant",
+      "ots_service_port": "18081"
     },
     "vars": {
       "ots_service_user": "vagrant",
-      "ots_service_base_host_rel": "ots-service-1",
-      "ots_service_port": "18080"
+      "ots_service_base_host_rel": "ots-service-1"
     }
   }
 }

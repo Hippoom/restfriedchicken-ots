@@ -1,6 +1,6 @@
 ---
 - name: Build ots-service image
-  hosts: docker-server
+  hosts: ots-services
   sudo: yes
 
   roles:

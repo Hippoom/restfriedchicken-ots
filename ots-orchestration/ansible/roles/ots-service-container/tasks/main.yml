@@ -2,7 +2,7 @@
 
  - name: detect existing ots service container
    shell: >
-     docker ps -f="name=acceptance-ots-service" -aq
+     docker ps -f="name={{ ots_service_container_name }}" -aq
    register: existing_container_id
 
  - debug: msg="{{ existing_container_id }}"
@@ -15,13 +15,13 @@
 
  - name: remove existing ots service container
    shell: >
-      docker rm {{ item }}
+     docker rm {{ item }}
    with_items: existing_container_id.stdout_lines
    when: existing_container_id.stdout_lines != []
 
 
  - name: start ots service container
    shell: >
-     docker run --name="acceptance-ots-service" -d -p={{ ots_service_port }}:8080 hippoom/restfriedchicken-ots-service
+     docker run --name="{{ ots_service_container_name }}" -d -p={{ ots_service_port }}:8080 hippoom/restfriedchicken-ots-service
 
 
