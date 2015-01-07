@@ -44,7 +44,7 @@ public class OnlineTxnResourceAcceptanceTest extends OnlineTxnResourceTestTempla
                 config.setBaseUri("http://" + JsonPath.<String>read(json, format("$.ots-services.%s.host", baseHostRel)));
             }
 
-            String port = JsonPath.read(json, "$.ots-services.vars.ots_service_port");
+            String port = JsonPath.read(json, format("$.ots-services.%s.ots_service_port", baseHostRel));
             if (StringUtils.isNotBlank(port)) {
                 config.setPort(Integer.parseInt(port));
             }
