@@ -8,7 +8,7 @@
     "vars": {
       "ots_service_user": "vagrant",
       "ots_service_base_host_rel": "ots-service-1",
-      "ots_service_port": "18081"
+      "ots_service_port": "18080"
     }
   }
 }
