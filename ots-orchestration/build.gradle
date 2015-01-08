@@ -1,25 +1,55 @@
-apply plugin: 'java'
-apply plugin: 'maven'
+task fetchOtsServiceJar(type: Exec) {
 
-task unitTest(type: Exec) {
-    commandLine "sh"
-    args "test.sh"
+    commandLine "mvn"
+    args "org.apache.maven.plugins:maven-dependency-plugin:2.9:get",
+            "-DgroupId=${project.group}",
+            "-DartifactId=ots-service",
+            "-Dversion=${project.version}",
+            "-Dtransitive=false",
+            "-Ddest=build/libs/ots-service-${project.version}.jar"
+
+}
+
+task fetchOtsTestJar(type: Exec) {
+
+    commandLine "mvn"
+    args "org.apache.maven.plugins:maven-dependency-plugin:2.9:get",
+            "-DgroupId=${project.group}",
+            "-DartifactId=ots-service",
+            "-Dversion=${project.version}",
+            "-Dclassifier=tests",
+            "-Dtransitive=false",
+            "-Ddest=build/libs/ots-service-${project.version}-tests.jar"
+
+}
+
+task copyOtsServiceJar(type: Copy, dependsOn: fetchOtsServiceJar) {
+    from("build/libs/ots-service-${project.version}.jar")
+    into("../ots-service/build/libs/")
+    outputs.upToDateWhen { false }//force to always rerun
+}
+
+task copyOtsTestJar(type: Copy, dependsOn: fetchOtsTestJar) {
+    from("build/libs/ots-service-${project.version}-tests.jar")
+    into("../ots-service/build/libs/")
+    outputs.upToDateWhen { false }//force to always rerun
+}
+
+task extractMainClasses(type: Copy, dependsOn: copyOtsServiceJar) {
+    from(zipTree("build/libs/ots-service-${project.version}.jar"))
+    into("../ots-service/build/classes/main/")
+    outputs.upToDateWhen { false }//force to always rerun
+}
+
+task extractTestClasses(type: Copy, dependsOn: copyOtsTestJar) {
+    from(zipTree("build/libs/ots-service-${project.version}-tests.jar"))
+    into("../ots-service/build/classes/test/")
+    outputs.upToDateWhen { false }//force to always rerun
+}
+
+task fetchBinary() {
+    dependsOn(extractMainClasses, extractTestClasses)
 }
 
 
-task dist(type: Zip) {
-    dependsOn unitTest
-    classifier = 'scripts'
-    from '.'
-    exclude 'environments', 'build'
-}
 
-assemble.dependsOn dist
-
-artifacts {
-    archives dist
-}
-
-install {
-    dependsOn assemble
-}
