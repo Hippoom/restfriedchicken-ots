@@ -4,7 +4,7 @@
       "host": "192.168.70.2",
       "user": "vagrant",
       "pass": "vagrant",
-      "ots_service_port": "18081"
+      "ots_service_port": "18082"
     },
     "vars": {
       "ots_service_user": "vagrant",
