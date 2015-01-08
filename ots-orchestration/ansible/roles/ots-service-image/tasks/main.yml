@@ -15,11 +15,11 @@
 
  - name: copy ansbile playbooks to build context
    copy: >
-     src=../{{ item }}
+     src="{{ item }}"
      dest=/tmp/ots/ots-orchestration/
    with_items:
-     - ansible
-     - environments
+     - ../ansible
+
 
  - name: copy binary to build context
    copy: >
