@@ -10,5 +10,12 @@
       "ots_service_user": "vagrant",
       "ots_service_base_host_rel": "ots-service-1"
     }
+  },
+  "docker-server": {
+    "docker-server": {
+      "host": "192.168.70.2",
+      "user": "vagrant",
+      "pass": "vagrant"
+    }
   }
 }

@@ -1,2 +1,0 @@
-[docker-server]
-192.168.70.2 ansible_ssh_user=vagrant ansible_ssh_pass=vagrant ansible_sudo_pass=vagrant
