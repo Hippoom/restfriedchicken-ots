@@ -5,7 +5,7 @@ allprojects {
     ext.buildNumber = System.getenv('GO_REVISION') == null ? "" : System.getenv('GO_REVISION')
 
     group = 'com.restfriedchicken.ots'
-    version = "1.0_${builderNumber}"
+    version = "1.0_${buildNumber}"
 
     println "The environment is ${env}"
 }
