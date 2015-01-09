@@ -17,6 +17,7 @@ configure(subprojects.findAll { it.name == 'ots-service' }) {
     buildscript {
         ext.mavenRepoBaseUrl = "http://localhost:8081/nexus"
         ext.mavenRepoUrl = "${mavenRepoBaseUrl}/content/groups/public/"
+        ext.mavenRepoPass = System.getenv('OTS_MVN_REPO_PASS')
 
         repositories {
             maven {
@@ -50,7 +51,7 @@ configure(subprojects.findAll { it.name == 'ots-service' }) {
             mavenDeployer {
 
                 repository(url: "${mavenRepoBaseUrl}/content/repositories/releases") {
-                    authentication(userName: 'admin', password: 'admin123');
+                    authentication(userName: 'admin', password: "${mavenRepoPass}");
                 }
             }
         }
