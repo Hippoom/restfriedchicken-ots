@@ -1,13 +1,9 @@
 allprojects {
 
-
-    ext.env = System.getenv('OTS_ENV') == null ? "dev" : System.getenv('OTS_ENV')
-    ext.buildNumber = System.getenv('GO_REVISION') == null ? "" : System.getenv('GO_REVISION')
+    ext.buildNumber = System.getenv('GO_REVISION') == null ? "local" : System.getenv('GO_REVISION')
 
     group = 'com.restfriedchicken.ots'
     version = "1.0_${buildNumber}"
-
-    println "The environment is ${env}"
 }
 
 configure(subprojects.findAll { it.name == 'ots-service' }) {
