@@ -1,9 +1,7 @@
 allprojects {
 
-    ext.buildNumber = System.getenv('GO_REVISION') == null ? "local" : System.getenv('GO_REVISION')
-
     group = 'com.restfriedchicken.ots'
-    version = "1.0_${buildNumber}"
+    version = "1.0"
 }
 
 configure(subprojects.findAll { it.name == 'ots-service' }) {
