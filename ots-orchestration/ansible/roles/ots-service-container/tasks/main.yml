@@ -19,9 +19,8 @@
    with_items: existing_container_id.stdout_lines
    when: existing_container_id.stdout_lines != []
 
-
  - name: start ots service container
    shell: >
-     docker run --name="{{ ots_service_container_name }}" -d -p={{ ots_service_port }}:8080 hippoom/restfriedchicken-ots-service:{{ots_service_tag| default('latest')}}
+     docker run --name="{{ ots_service_container_name }}" -d -p={{ ots_service_port }}:8080 hippoom/restfriedchicken-ots-service:{{ ots_service_tag }}
 
 
