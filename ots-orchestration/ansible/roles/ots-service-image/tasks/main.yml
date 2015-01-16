@@ -28,5 +28,5 @@
 
  - name: build ots service image
    shell: >
-     docker build -t="hippoom/restfriedchicken-ots-service" /tmp/ots/
+     docker build -t="hippoom/restfriedchicken-ots-service:{{ ots_service_tag | default('latest')}}" /tmp/ots/
 
