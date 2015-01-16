@@ -1,4 +1,4 @@
 ---
 ots_service_port: 18080
-ots_service_container_name: "{{ env }}-ots-service"
+ots_service_container_name: "{{ env }}-ots-service-{{ots_service_port}}"
 
