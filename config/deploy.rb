@@ -5,10 +5,10 @@ SSHKit.config.command_map[:rake] = "bundle exec rake"
 SSHKit.config.command_map[:rails] = "bundle exec rails"
 
 set :application, 'ots-service'
-set :repo_url, 'https://github.com/Hippoom/restfriedchicken-ots.git'
 
-# Default branch is :master
+set :repo_url, 'https://github.com/Hippoom/restfriedchicken-ots.git'
 set :branch, 'rails'
+
 set :rails_env, :production
 
 #set :rbenv_ruby, '2.2.0'
@@ -26,7 +26,7 @@ set :rails_env, :production
 # set :log_level, :debug
 
 # Default value for :pty is false
-set :pty, true
+# set :pty, true
 
 # Default value for :linked_files is []
 # set :linked_files, fetch(:linked_files, []).push('config/database.yml')
