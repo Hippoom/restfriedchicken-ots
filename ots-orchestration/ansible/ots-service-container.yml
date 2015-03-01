@@ -1,9 +1,0 @@
----
-- name: Build ots-service image
-  hosts: ots-services
-  sudo: yes
-
-  roles:
-    - ots-service-container
-
-

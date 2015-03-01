@@ -1,6 +1,0 @@
----
-- name: Deploy OTS service
-  hosts: localhost
-
-  roles:
-    - ots-service-deployment
