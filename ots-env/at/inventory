@@ -1,0 +1,5 @@
+[ots-services]
+ots-service ansible_ssh_host=192.168.70.2 ansible_ssh_user=vagrant ansible_ssh_pass=vagrant ots-service-port=18101
+
+[docker-img-builder]
+192.168.70.2 ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
