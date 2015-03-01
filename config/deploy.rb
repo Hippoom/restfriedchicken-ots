@@ -8,6 +8,8 @@ set :repo_url, 'https://github.com/Hippoom/restfriedchicken-ots.git'
 set :branch, 'rails'
 set :rails_env, :production
 
+set :rbenv_ruby, '2.2.0'
+
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, '/var/www/my_app_name'
 
