@@ -1,6 +1,9 @@
 # config valid only for current version of Capistrano
 lock '3.3.5'
 
+SSHKit.config.command_map[:rake] = "bundle exec rake"
+SSHKit.config.command_map[:rails] = "bundle exec rails"
+
 set :application, 'ots-service'
 set :repo_url, 'https://github.com/Hippoom/restfriedchicken-ots.git'
 
@@ -8,7 +11,7 @@ set :repo_url, 'https://github.com/Hippoom/restfriedchicken-ots.git'
 set :branch, 'rails'
 set :rails_env, :production
 
-set :rbenv_ruby, '2.2.0'
+#set :rbenv_ruby, '2.2.0'
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, '/var/www/my_app_name'
@@ -23,7 +26,7 @@ set :rbenv_ruby, '2.2.0'
 # set :log_level, :debug
 
 # Default value for :pty is false
-# set :pty, true
+set :pty, true
 
 # Default value for :linked_files is []
 # set :linked_files, fetch(:linked_files, []).push('config/database.yml')
